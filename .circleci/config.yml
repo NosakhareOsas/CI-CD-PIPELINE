@@ -36,6 +36,16 @@ jobs:
      - run:
         name: "i want to print great"
         command: "echo man"
+  enr-var-print:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Print enviroment variable author
+          command: |
+            echo ${AUTHOR_NAME}
+
     
 
 # Invoke jobs via workflows
