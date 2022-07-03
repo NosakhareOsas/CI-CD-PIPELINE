@@ -47,6 +47,34 @@ jobs:
           command: |
             echo ${AUTHOR_NAME}
 
+  save_hello_world_output:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run:
+          name: Create first file
+          command: |
+            mkdir -p workspace
+            echo "MY FIRST FILE IS HERE" > firstFile.txt
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - firstFile.txt
+
+  print_output_file:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run:
+          name: Create first file
+          command: |
+            cat firstFile.txt
+      - attach_workspace:
+          at: workspace
+
+
     
 
 # Invoke jobs via workflows
@@ -61,3 +89,7 @@ workflows:
           requires: 
             - print-great
       - enr-var-print
+      - save_hello_world_output
+      - print_output_file:
+        requires:
+          - save_hello_world_output
