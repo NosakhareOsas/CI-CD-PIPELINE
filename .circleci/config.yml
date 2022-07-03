@@ -70,8 +70,7 @@ jobs:
       - run:
           name: Create first file
           command: |
-            cd workspace
-            cat firstFile.txt
+            cat workspace/firstFile.txt
       - attach_workspace:
           at: workspace
 
