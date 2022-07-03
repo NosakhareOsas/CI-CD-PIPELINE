@@ -68,9 +68,9 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: workspace
+          at: workspace/firstFile.txt
       - run:
-          name: Create first file
+          name: Read first file
           command: |
             cat firstFile.txt
       
