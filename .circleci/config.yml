@@ -58,7 +58,7 @@ jobs:
             mkdir -p workspace
             echo "MY FIRST FILE IS HERE" > workspace/firstFile.txt
       - persist_to_workspace:
-          root: ./workspace
+          root: workspace
           paths:
             - firstFile.txt
 
@@ -68,11 +68,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ./workspace
+          at: workspace
       - run:
           name: Read first file
           command: |
-            cat firstFile.txt
+            cat workspace/firstFile.txt
       
 
 
