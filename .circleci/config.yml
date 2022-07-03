@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Print enviroment variable author
           command: |
-            echo ${AUTHOR_NAME}
+            echo $AUTHOR_NAME
 
     
 
