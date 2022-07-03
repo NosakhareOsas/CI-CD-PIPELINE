@@ -55,10 +55,10 @@ jobs:
       - run:
           name: Create first file
           command: |
-            mkdir -p workspace
-            echo "MY FIRST FILE IS HERE" > workspace/firstFile.txt
+           
+            echo "MY FIRST FILE IS HERE" > ~/firstFile.txt
       - persist_to_workspace:
-          root: workspace
+          root: ~/
           paths:
             - firstFile.txt
 
@@ -68,11 +68,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: workspace
+          at: ~/
       - run:
           name: Read first file
           command: |
-            cat workspace/firstFile.txt
+            cat ~/firstFile.txt
       
 
 
