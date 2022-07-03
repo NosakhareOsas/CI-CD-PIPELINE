@@ -26,7 +26,7 @@ jobs:
      - checkout
      - run:
         name: i want to print great
-        run: echo great
+        command: echo great
 
   print-man:
     docker:
@@ -35,7 +35,7 @@ jobs:
      - checkout
      - run:
         name: "i want to print great"
-        run: "echo man"
+        command: "echo man"
     
 
 # Invoke jobs via workflows
