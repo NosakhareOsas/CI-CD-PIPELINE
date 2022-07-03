@@ -46,5 +46,6 @@ workflows:
     jobs:
       - say-hello
       - print-great
-      - print-man
-          requires: [print-great]
+      - print-man:
+          requires: 
+            - print-great
