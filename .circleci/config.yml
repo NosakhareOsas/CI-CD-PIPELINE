@@ -49,21 +49,30 @@ jobs:
 
   save_hello_world_output:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
-      - run: echo "hello world" > ~/output.txt
+      - checkout
+      - run:
+          name: Create first file
+          command: |
+            mkdir -p workspace
+            echo "MY FIRST FILE IS HERE" > workspace/firstFile.txt
       - persist_to_workspace:
-          root: ~/
+          root: workspace
           paths:
-            - output.txt
+            - firstFile.txt
 
   print_output_file:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/
-      - run: cat ~/output.txt
+          at: workspace
+      - run:
+          name: Read first file
+          command: |
+            cat workspace/firstFile.txt
       
 
 
