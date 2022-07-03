@@ -67,12 +67,13 @@ jobs:
       - image: cimg/base:2020.01
     steps:
       - checkout
+      - attach_workspace:
+          at: workspace
       - run:
           name: Create first file
           command: |
-            cat workspace/firstFile.txt
-      - attach_workspace:
-          at: workspace
+            cat firstFile.txt
+      
 
 
     
