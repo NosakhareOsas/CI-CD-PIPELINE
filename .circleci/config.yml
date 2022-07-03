@@ -56,7 +56,7 @@ jobs:
           name: Create first file
           command: |
             mkdir -p workspace
-            echo "MY FIRST FILE IS HERE" > firstFile.txt
+            echo "MY FIRST FILE IS HERE" > workspace/firstFile.txt
       - persist_to_workspace:
           root: workspace
           paths:
