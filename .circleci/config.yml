@@ -36,6 +36,7 @@ jobs:
      - run:
         name: "i want to print great"
         command: "echo man"
+
   enr-var-print:
     docker:
       - image: circleci/node:13.8.0
@@ -59,3 +60,4 @@ workflows:
       - print-man:
           requires: 
             - print-great
+      - enr-var-print
