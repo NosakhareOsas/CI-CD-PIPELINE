@@ -39,13 +39,13 @@ jobs:
 
   enr-var-print:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
       - checkout
       - run:
           name: Print enviroment variable author
           command: |
-            echo $AUTHOR_NAME
+            echo ${AUTHOR_NAME}
 
     
 
