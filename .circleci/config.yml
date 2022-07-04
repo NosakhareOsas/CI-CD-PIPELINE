@@ -70,7 +70,7 @@ jobs:
       - attach_workspace:
           at: workspace
       - run:
-          name: Read first file
+          name: Create first file
           command: |
             cat workspace/firstFile.txt
       
