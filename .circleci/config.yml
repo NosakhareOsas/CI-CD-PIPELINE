@@ -9,7 +9,7 @@ commands:
     description: "Print pipeline ID"
     parameters:
       to:
-        type: String
+        type: string
         default: "ID should br here bro"
     steps:
       - run: 
