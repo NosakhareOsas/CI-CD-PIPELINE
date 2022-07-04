@@ -8,13 +8,13 @@ commands:
   print_pipeline_id:
     description: "Print pipeline ID"
     parameters:
-      to:
+      id:
         type: string
         default: "ID should br here bro"
     steps:
       - run: 
           name: print pipeline id now
-          command: echo <<parameters.to>>
+          command: echo <<parameters.id>>
 jobs:
   print-great:
     docker:
@@ -23,14 +23,17 @@ jobs:
      - checkout
      - run:
         name: i want to print great
-        command: echo great man
+        command: return 1
+
+
+        
 
   enr-var-print:
     <<: *defaults
     steps:
       - checkout
       - print_pipeline_id:
-          to: $CIRCLE_WORKFLOW_ID
+          id: ${CIRCLE_WORKFLOW_ID}
       - run:
           name: Print enviroment variable author
           command: |
