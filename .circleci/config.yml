@@ -23,7 +23,7 @@ jobs:
      - checkout
      - run:
         name: i want to print great
-        command: echo great
+        command: exit 1
      - run:
         name: Failed Tests
         command: echo you failed bro
