@@ -1,18 +1,10 @@
 version: 2.1
+defaults: &defaults
+  docker:
+    - image: cimg/base:stable
+  working_directory: ~/project
 
 jobs:
-  say-hello:
-    
-    docker:
-      - image: cimg/base:stable
-    
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
-
   print-great:
     docker:
       - image: circleci/node:13.8.0
@@ -20,20 +12,10 @@ jobs:
      - checkout
      - run:
         name: i want to print great
-        command: echo great
-
-  print-man:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-     - checkout
-     - run:
-        name: "i want to print great"
-        command: "echo man"
+        command: echo great man
 
   enr-var-print:
-    docker:
-      - image: cimg/base:2020.01
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -42,8 +24,7 @@ jobs:
             echo ${AUTHOR_NAME}
 
   save_hello_world_output:
-    docker:
-      - image: cimg/base:2020.01
+    <<: *defaults
     steps:
       - checkout
       - run:
@@ -52,37 +33,25 @@ jobs:
             mkdir -p workspace
             echo "MY FIRST FILE IS HERE" > workspace/firstFile.txt
       - persist_to_workspace:
-          root: workspace
+          root: project/workspace
           paths:
             - firstFile.txt
 
   print_output_file:
-    docker:
-      - image: cimg/base:2020.01
+    <<: *defaults
     steps:
       - checkout
       - attach_workspace:
-          at: workspace
+          at: project/workspace
       - run:
           name: Create first file
           command: |
             cat workspace/firstFile.txt
       
-
-
-    
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
       - print-great
-      - print-man:
-          requires: 
-            - print-great
       - enr-var-print
       - save_hello_world_output
       - print_output_file:
