@@ -33,7 +33,7 @@ jobs:
             mkdir -p workspace
             echo "MY FIRST FILE IS HERE" > workspace/firstFile.txt
       - persist_to_workspace:
-          root: project/workspace
+          root: workspace
           paths:
             - firstFile.txt
 
@@ -42,7 +42,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: project/workspace
+          at: workspace
       - run:
           name: Create first file
           command: |
