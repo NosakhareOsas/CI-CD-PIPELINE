@@ -6,15 +6,15 @@ defaults: &defaults
 
 commands:
   print_pipeline_id:
-  description: "Print pipeline ID"
-  parameters:
-    to:
-      type: String
-      default: "ID should br here bro"
-  steps:
-    - run: 
-        name: print pipeline id now
-        command: echo <<parameters.to>>
+    description: "Print pipeline ID"
+    parameters:
+      to:
+        type: String
+        default: "ID should br here bro"
+    steps:
+      - run: 
+          name: print pipeline id now
+          command: echo <<parameters.to>>
 jobs:
   print-great:
     docker:
