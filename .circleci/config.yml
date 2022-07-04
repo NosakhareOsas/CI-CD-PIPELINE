@@ -24,6 +24,10 @@ jobs:
      - run:
         name: i want to print great
         command: return 1
+     - run:
+        name: Failed Tests
+        command: echo you failed bro
+        when: on_fail
 
 
         
